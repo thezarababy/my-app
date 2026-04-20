@@ -2,13 +2,15 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { usePathname } from "next/navigation";
 import { HeartPulse, Menu, User, Bell, X } from "lucide-react";
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
 
-
+  // Prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -18,31 +20,36 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/70 transition-all">
+    <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${isScrolled
+      ? "bg-white shadow-sm border-gray-200"
+      : "bg-white/50 backdrop-blur-md border-transparent"
+      }`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between bg-transparent">
+        <div className="flex h-16 items-center justify-between">
 
           {/* Logo Section */}
           <div className="flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm ring-1 ring-blue-600/20">
               <HeartPulse size={20} strokeWidth={2.5} />
             </div>
-            <Link href="/" className="text-xl font-bold tracking-tight text-gray-900" onClick={() => setIsMobileMenuOpen(false)}>
+            <a href="/" className="text-xl font-bold tracking-tight text-gray-900" onClick={() => setIsMobileMenuOpen(false)}>
               Virtu<span className="text-blue-600">Care</span>
-            </Link>
+            </a>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:gap-8">
             <Link
-              href="/"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+              href="/book"
+              className={`text-sm font-semibold transition-colors hover:text-blue-600 ${pathname === "/book" ? "text-blue-600 border-b-2 border-blue-600 py-5" : "text-gray-600 py-5"
+                }`}
             >
               Find a Doctor
             </Link>
             <Link
               href="/appointments"
-              className="text-sm font-medium text-gray-600 transition-colors hover:text-blue-600"
+              className={`text-sm font-semibold transition-colors hover:text-blue-600 ${pathname === "/appointments" ? "text-blue-600 border-b-2 border-blue-600 py-5" : "text-gray-600 py-5"
+                }`}
             >
               My Appointments
             </Link>
@@ -57,7 +64,7 @@ export function Navbar() {
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                 <User size={16} />
               </div>
-              <span className="hidden lg:inline-block">John Doe</span>
+              <span className="hidden lg:inline-block">Joy Okoduwa</span>
             </div>
           </div>
 
@@ -85,15 +92,17 @@ export function Navbar() {
         <div className="md:hidden fixed inset-0 top-[64px] z-40 h-[calc(100vh-64px)] w-full bg-white px-4 py-6 shadow-xl flex flex-col">
           <div className="flex flex-col space-y-6 flex-1">
             <Link
-              href="/"
-              className="text-xl font-medium text-gray-800 transition-colors hover:text-blue-600"
+              href="/book"
+              className={`text-xl font-semibold transition-colors hover:text-blue-600 ${pathname === "/book" ? "text-blue-600" : "text-gray-800"
+                }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Find a Doctor
             </Link>
             <Link
               href="/appointments"
-              className="text-xl font-medium text-gray-800 transition-colors hover:text-blue-600"
+              className={`text-xl font-semibold transition-colors hover:text-blue-600 ${pathname === "/appointments" ? "text-blue-600" : "text-gray-800"
+                }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
               My Appointments
@@ -107,7 +116,7 @@ export function Navbar() {
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                     <User size={24} />
                   </div>
-                  <span className="font-semibold text-lg text-gray-900">John Doe</span>
+                  <span className="font-semibold text-lg text-gray-900">Joy Okoduwa</span>
                 </div>
                 <div className="p-2 rounded-full bg-gray-50">
                   <Bell size={24} className="text-gray-500 cursor-pointer" />
