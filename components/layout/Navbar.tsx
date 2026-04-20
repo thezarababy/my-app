@@ -8,7 +8,7 @@ import { HeartPulse, Menu, User, Bell, X } from "lucide-react";
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  // Prevent scrolling when mobile menu is open
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -18,10 +18,10 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   return (
-    <nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/70 backdrop-blur-lg transition-all">
+    <nav className="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/70 transition-all">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between bg-transparent">
-          
+
           {/* Logo Section */}
           <div className="flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm ring-1 ring-blue-600/20">
@@ -52,32 +52,28 @@ export function Navbar() {
           <div className="hidden md:flex md:items-center md:gap-4">
             <Bell size={20} className="text-gray-500 transition-colors hover:text-gray-900 cursor-pointer" />
             <div className="h-6 w-[1px] bg-gray-200"></div>
-            
+
             <div className="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium gap-2 text-gray-700 transition-colors hover:bg-gray-100 cursor-pointer">
               <div className="flex h-7 w-7 items-center justify-center rounded-full bg-blue-50 text-blue-600">
                 <User size={16} />
               </div>
               <span className="hidden lg:inline-block">John Doe</span>
             </div>
-
-            <Button variant="primary" className="shadow-blue-500/20">
-              Book Now
-            </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="flex items-center md:hidden relative z-50">
             {isMobileMenuOpen ? (
-              <X 
-                size={24} 
-                className="text-gray-600 cursor-pointer" 
-                onClick={() => setIsMobileMenuOpen(false)} 
+              <X
+                size={24}
+                className="text-gray-600 cursor-pointer"
+                onClick={() => setIsMobileMenuOpen(false)}
               />
             ) : (
-              <Menu 
-                size={24} 
-                className="text-gray-600 cursor-pointer" 
-                onClick={() => setIsMobileMenuOpen(true)} 
+              <Menu
+                size={24}
+                className="text-gray-600 cursor-pointer"
+                onClick={() => setIsMobileMenuOpen(true)}
               />
             )}
           </div>
@@ -102,9 +98,9 @@ export function Navbar() {
             >
               My Appointments
             </Link>
-            
+
             <div className="my-2 h-px w-full bg-gray-100"></div>
-            
+
             <div className="flex flex-col gap-6 mt-4">
               <div className="flex items-center justify-between text-gray-700">
                 <div className="flex items-center gap-3">
@@ -117,10 +113,6 @@ export function Navbar() {
                   <Bell size={24} className="text-gray-500 cursor-pointer" />
                 </div>
               </div>
-              
-              <Button variant="primary" className="w-full py-6 text-lg shadow-blue-500/20 mt-auto mb-10" onClick={() => setIsMobileMenuOpen(false)}>
-                Book Now
-              </Button>
             </div>
           </div>
         </div>
