@@ -12,7 +12,7 @@ interface AppointmentContextType {
   updateAppointment: (id: string, updates: Partial<Appointment>) => void;
 }
 
-const AppointmentContext = createContext<AppointmentContextType | undefined>(undefined);
+export const AppointmentContext = createContext<AppointmentContextType | undefined>(undefined);
 
 export default function AppointmentProvider({ children }: { children: ReactNode }) {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
