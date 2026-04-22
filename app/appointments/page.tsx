@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { useAppointments } from '../../context/AppointmentContext';
+import { useAppointments } from '@/context/BookingContext';
 import { mockDoctors } from '@/data/mockDoctors';
 import { Calendar, Clock, User, FileText } from 'lucide-react';
 

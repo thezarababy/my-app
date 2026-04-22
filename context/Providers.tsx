@@ -1,8 +1,9 @@
 "use client";
 
 import React, { ReactNode } from "react";
-import { AppointmentProvider } from "./AppointmentContext";
-;
+import { AppointmentProvider } from "@/context/BookingContext";
+
+
 
 export function Providers({ children }: { children: ReactNode }) {
   return (

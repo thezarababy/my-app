@@ -3,7 +3,7 @@
 import React, { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { mockDoctors } from '@/data/mockDoctors';
-import { useAppointments } from '../../../context/AppointmentContext';
+import { useAppointments } from '@/context/BookingContext';
 import { AppointmentTime, Doctor } from '@/types';
 import { Star, Users, CalendarDays, ArrowLeft, Clock } from 'lucide-react';
 import Link from 'next/link';
