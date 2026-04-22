@@ -14,7 +14,7 @@ interface AppointmentContextType {
 
 export const AppointmentContext = createContext<AppointmentContextType | undefined>(undefined);
 
-export default function AppointmentProvider({ children }: { children: ReactNode }) {
+export function AppointmentProvider({ children }: { children: ReactNode }) {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
