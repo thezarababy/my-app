@@ -65,7 +65,7 @@ export function DoctorCard({ doctor }: DoctorCardProps) {
             <span>Available</span>
           </div>
           <Link href={`/book/${doctor.id}`}>
-            <Button variant="primary" className="shadow-sm shadow-blue-500/20 active:scale-95">
+            <Button variant="outline" className="shadow-sm shadow-blue-500/20 active:scale-95">
               Book Now
             </Button>
           </Link>

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { toast } from 'sonner';
 import { Appointment } from '@/types';
 
 interface AppointmentContextType {
@@ -42,15 +43,17 @@ export function AppointmentProvider({ children }: { children: ReactNode }) {
       status: "confirmed",
     };
     setAppointments(prev => [...prev, newAppointment]);
-    alert("✅ Appointment booked successfully!");
+    toast.success("Appointment booked successfully!");
   };
 
   const cancelAppointment = (id: string) => {
     setAppointments(prev => prev.map(apt => apt.id === id ? { ...apt, status: 'cancelled' } : apt));
+    toast.info("Appointment cancelled.");
   };
 
   const deleteAppointment = (id: string) => {
     setAppointments(prev => prev.filter(apt => apt.id !== id));
+    toast.error("Appointment deleted.");
   };
 
   const updateAppointment = (id: string, updates: Partial<Appointment>) => {

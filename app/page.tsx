@@ -7,10 +7,16 @@ export default function HomePage() {
     <div className="flex flex-col flex-1">
       <section className="relative w-full flex-1 min-h-[calc(100vh-64px)] flex items-center justify-center">
 
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: "url('/images/hero.png')" }}
-        >
+        <div className="absolute inset-0 overflow-hidden">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+          >
+            <source src="/assets/hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60"></div>
         </div>
 
